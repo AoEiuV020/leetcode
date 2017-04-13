@@ -1,0 +1,1 @@
+for i in `cat words.txt`;do echo $i;done|sort |uniq --count |sort --reverse |awk '{print $2,$1}'
