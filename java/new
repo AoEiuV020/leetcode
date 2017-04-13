@@ -1,0 +1,38 @@
+#!/usr/bin/env sh
+set -e
+test -z "$1" && exit 1
+index=$1
+test "$index" -gt 0 &>/dev/null || exit 2
+method=${2:-foo}
+echo "p$index.SolutionTest.$method" > method
+mkdir src/main/java/p$index/
+cat >src/main/java/p$index/Solution.java <<EOF
+package p$index;
+import java.util.*;
+import java.io.*;
+/**
+  <pre>
+  </pre>
+ */
+public class Solution{
+    public void $method(){
+    }
+}
+EOF
+mkdir src/test/java/p$index/
+cat >src/test/java/p$index/SolutionTest.java <<EOF
+package p$index;
+import java.util.*;
+import java.io.*;
+import org.junit.*;
+import static org.junit.Assert.*;
+/**
+ * Created by AoEiuV020 on $(date '+%Y/%m/%d').
+ */
+public class SolutionTest{
+    Solution solution=new Solution();
+    @Test
+    public void $method() throws Exception {
+    }
+}
+EOF
