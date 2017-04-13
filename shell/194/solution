@@ -1,0 +1,24 @@
+#failed
+#Time Limit Exceeded
+#这题数据量大，根本就不适合用shell完成，
+row=0
+index=0
+while read line
+do
+    ((++row))
+    for i in $line
+    do
+        arr[$index]=$i
+        ((++index))
+    done
+done < file.txt
+column=$(expr $index / $row)
+for((i=0;i<column;++i))
+do
+    for((j=0;j<row;++j))
+    do
+        test "$j" = "0"||echo -n " "
+        echo -n "${arr[$(expr $column \* $j + $i)]}"
+    done
+    echo
+done
