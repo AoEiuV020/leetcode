@@ -7,6 +7,7 @@ method=${2:-foo}
 echo "p$index.SolutionTest.$method" > method
 mkdir src/main/java/p$index/
 echo src/main/java/p$index/Solution.java
+echo src/main/java/p$index/Solution.java >file
 cat >src/main/java/p$index/Solution.java <<EOF
 package p$index;
 import java.util.*;
