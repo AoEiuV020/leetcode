@@ -15,6 +15,7 @@ import java.io.*;
 /**
   <pre>
   </pre>
+ * Created by AoEiuV020 on $(date '+%Y/%m/%d').
  */
 public class Solution{
     public void $method(){
