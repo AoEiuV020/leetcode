@@ -1,0 +1,25 @@
+#!/usr/bin/env sh
+set -e
+test -z "$1" && exit 1
+index=$1
+test "$index" -gt 0 &>/dev/null || exit 2
+method=${2:-foo}
+echo lib/s$index.dart
+cat >lib/s$index.dart <<EOF
+class Solution {
+  int foo() {
+    return 0;
+  }
+}
+EOF
+echo test/s${index}_test.dart | tee test_file
+cat >test/s${index}_test.dart <<EOF
+import 'package:dart/s$index.dart';
+import 'package:test/test.dart';
+
+void main() {
+  test('solution', () {
+    expect(Solution().foo(), 0);
+  });
+}
+EOF
