@@ -7,8 +7,8 @@ method=${2:-foo}
 echo lib/s$index.dart
 cat >lib/s$index.dart <<EOF
 class Solution {
-  int foo() {
-    return 0;
+  int foo(int n) {
+    return n;
   }
 }
 EOF
@@ -19,7 +19,11 @@ import 'package:test/test.dart';
 
 void main() {
   test('solution', () {
-    expect(Solution().foo(), 0);
+    realTest(0, 0);
   });
+}
+
+void realTest(int input, int expected) {
+  expect(Solution().foo(input), expected);
 }
 EOF
